@@ -17,13 +17,26 @@ if (!isset($_SESSION['csrf_token'])){
     setToken();
 }
 
+
+if ($_SESSION['REQUEST_METHOD'] == 'POST') {
+    checkToken();
+
+    $datas = [
+        'name' => '',
+        'password' => '',
+        'confirm_password' => ''
+    ];
+
+    foreach ( $datas as $key => $value) {
+        if ($value = filter_input(INPUT_POST, $key, FILTER_DEFAULT)) {
+    }
+    
+}
 ###### if リクエストメソッドがpostの時、tokencheck, login
 
-$datas = [
-    'name' => '',
-    'password' => '',
-    'confirm_ssword' => ''
-];
+    
+
+
 
 ?>
 
