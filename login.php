@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div>
                 <label>パスワード</label><br/>
-                <input type="password" name="password">
+                <input type="password" autocomplete="new-password" name="password">
             </div>
             
             <div>

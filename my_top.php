@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>ログイン後とっぷ</p>
+    <a href="logout.php">ログアウト</a>
+    <p></p>
 </body>
 </html>
