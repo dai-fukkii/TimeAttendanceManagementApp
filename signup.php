@@ -13,7 +13,7 @@ if (!isset($_SESSION['csrf_token'])){
     setToken();
 }
 
-if ( $_SERVER['REQUEST_METHOD'] == 'POST'){
+if ( $_SERVER['REQUEST_METHOD'] === 'POST'){
     checkToken();
 
     $datas = [
@@ -23,6 +23,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST'){
     ];
 
     $errors = validation($datas, true);
+
 
     if (empty($errors['name'])) {
         #取得するViewのsql文
@@ -61,7 +62,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST'){
         }
 
     }
-   
 }
 
 ?>
@@ -72,24 +72,24 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
+    <link rel="stylesheet" href="css/login_signup.css">
 </head>
     <body>
         <h1>サインアップ</h1>
-       
         
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             
             <div>
-                <label>ユーザ名</label><br/>
-                <input type="text" name="username">
+                <input type="text" name="username" id="username" placeholder="ユーザ名">
+                <br>
             </div>
             <div>
-                <label>パスワード</label><br/>
-                <input type="password" autocomplete="new-password" name="password">
+                <input type="password" autocomplete="new-password" name="password" id="password" placeholder="パスワード">
+                <br>
             </div>
             <div>
-                <label>確認パスワード</label><br/>
-                <input type="password" name="confirm_password">
+                <input type="password" name="confirm_password" placeholder="確認パスワード" id="confirm_password">
+                <br>
             </div>
             
             <div>
@@ -101,6 +101,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST'){
             
         
         <p>既に登録済みである場合は<a href="login.php">こちら</a></p>
+
+        <script src="script/login_signup_animation.js"></script>
     </body>
 </html>
 
