@@ -20,12 +20,16 @@ function validation($datas, $confirm){
         $errors['name'] = 'ユーザネームは6文字以上、50文字以内で入力してください';
     }
 
+    
+
     if(empty($datas['password'])){
         $errors['password'] = 'パスワードを入力してください';
     }
     else if(!preg_match('/\A[a-z\d]{6,}\z/i', $datas['password']) ){   
         $errors['password'] = 'パスワードは6文字以上で英数字入力してください';
     }
+
+    
 
     if($confirm){
         if(empty($datas['confirm_password'])){

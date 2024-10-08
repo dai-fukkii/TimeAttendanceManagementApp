@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($value = filter_input(INPUT_POST, $key, FILTER_DEFAULT)) {
             $datas[$key] = $value;
         }
-        echo $value;
     }
     
 
@@ -46,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             if (password_verify($datas['password'], $row['password'])) {
-                echo "ok";
                 session_regenerate_id();
                 $_SESSSION['login'] = true;
                 $_SESSION['id'] = $row['id'];
@@ -54,11 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header("location:my_top.php");
             }
             else {
-                $login_err = "Invalid username or password";
+                $login_err = "ユーザネームもしくはパスワードが間違っています";
             }
         }
         else {
-            $login_err = "Invalid username or password";
+            $login_err = "ユーザネームもしくはパスワードが間違っています";
         }
     }
 
@@ -78,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="css/login_signup.css">
 </head>
 <body>
     <h1>ログイン</h1>
@@ -89,12 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             
             <div>
-                <label>ユーザ名</label><br/>
-                <input type="text" name="name">
+                <input type="text" name="name" id="username" placeholder="ユーザ名">
+                <br>
             </div>
             <div>
-                <label>パスワード</label><br/>
-                <input type="password" autocomplete="new-password" name="password">
+                
+                <input type="password" autocomplete="new-password" name="password" id="password" placeholder="パスワード">
+                <br>
             </div>
             
             <div>
@@ -105,5 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <p>登録をしていない方はこちら <a href="signup.php">サインアップ</a></p>
         </form>
+
+        <script src="script/login_signup_animation.js"></script>
 </body>
 </html>

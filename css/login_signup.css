@@ -1,0 +1,4 @@
+input:focus {
+    border: 0.15rem dashed orange;
+    outline: none;
+}
